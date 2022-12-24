@@ -6,8 +6,9 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from data_load import DataModule
 from modeling import ColaModel
 
+
 def main():
-    cola_data = DataModule()    
+    cola_data = DataModule()
     cola_model = ColaModel()
 
     checkpoint_callback = ModelCheckpoint(
@@ -16,6 +17,7 @@ def main():
     early_stopping_callback = EarlyStopping(
         monitor="val_loss", patience=3, verbose=True, mode="min"
     )
+
     trainer = pl.Trainer(
         default_root_dir="logs",
         gpus=(1 if torch.cuda.is_available() else 0),
@@ -26,6 +28,6 @@ def main():
     )
     trainer.fit(cola_model, cola_data)
 
-    if __name__== "__main__":
-        main()
-    
+
+if __name__ == "__main__":
+    main()
