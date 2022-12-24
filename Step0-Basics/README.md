@@ -1,6 +1,6 @@
 ### Introduction
 
-The idea of this repo is to understand the basics of MLOps for personal understanding (Referenced from: https://www.ravirajag.dev/blog/). This will cover the basics of MLOps:
+The idea of this repo is to understand the basics of MLOps for personal understanding. This will cover the basics of MLOps:
 - Model Building
 - Monitoring
 - Configurations
