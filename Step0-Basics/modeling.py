@@ -30,9 +30,9 @@ class ColaModel(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         logits = self.forward(batch["input_ids"], batch["attention_mask"])
         loss = F.cross_entropy(logits, batch["label"])
-        _, preds = torch.max(logits, dim=1)
+        _, preds = torch.Tensor.max(logits, dim=1)
         val_acc = accuracy_score(preds.cpu(), batch["label"].cpu())
-        val_acc = torch.tensor(val_acc)
+        val_acc = torch.Tensor(val_acc)
         self.log("val_loss", loss, prog_bar = True)
         self.log("val_acc", val_acc, prog_bar= True)
 
