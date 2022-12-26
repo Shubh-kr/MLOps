@@ -56,4 +56,4 @@ if __name__ == "__main__":
     data_model = DataModule()
     data_model.prepare_data()
     data_model.setup()
-    print(next(iter(data_model.train_dataloader()))["input_ids"].shape)
+    print("Something's happening")
