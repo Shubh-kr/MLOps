@@ -1,0 +1,64 @@
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Found cached dataset glue (/home/codespace/.cache/huggingface/datasets/glue/cola/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 557.28it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 13.98ba/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 24.20ba/s]
+  | Name                   | Type                          | Params
+-------------------------------------------------------------------------
+0 | bert                   | BertForSequenceClassification | 4.4 M
+1 | train_accuracy_metric  | BinaryAccuracy                | 0
+2 | val_accuracy_metric    | BinaryAccuracy                | 0
+3 | precision_macro_metric | BinaryPrecision               | 0
+4 | recall_macro_metric    | BinaryRecall                  | 0
+5 | precision_micro_metric | BinaryPrecision               | 0
+-------------------------------------------------------------------------
+4.4 M     Trainable params
+0         Non-trainable params
+4.4 M     Total params
+17.545    Total estimated model params size (MB)
+/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 4 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+Traceback (most recent call last):
+  File "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/train.py", line 65, in <module>
+    main()
+  File "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/train.py", line 61, in main
+    trainer.fit(cola_model, cola_data)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 603, in fit
+    call._call_and_handle_interrupt(
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 645, in _fit_impl
+    self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1098, in _run
+    results = self._run_stage()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1177, in _run_stage
+    self._run_train()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1190, in _run_train
+    self._run_sanity_check()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1262, in _run_sanity_check
+    val_loop.run()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 152, in advance
+    dl_outputs = self.epoch_loop.run(self._data_fetcher, dl_max_batches, kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 137, in advance
+    output = self._evaluation_step(**kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 234, in _evaluation_step
+    output = self.trainer._call_strategy_hook(hook_name, *kwargs.values())
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1480, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 390, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+  File "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/model.py", line 63, in validation_step
+    recall_micro = self.recall_micro_metric(preds, labels)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/torchmetrics/classification/precision_recall.py", line 698, in __new__
+    raise ValueError(
+ValueError: Expected argument `task` to either be `'binary'`, `'multiclass'` or `'multilabel'` but got tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+Sanity Checking DataLoader 0:   0%|                                                                                                                    | 0/2 [00:00<?, ?it/s]

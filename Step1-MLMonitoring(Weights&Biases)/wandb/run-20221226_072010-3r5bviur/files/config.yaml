@@ -1,0 +1,49 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.13.7
+    framework: huggingface
+    huggingface_version: 4.25.1
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    python_version: 3.10.4
+    start_time: 1672039210.494299
+    t:
+      1:
+      - 1
+      - 5
+      - 9
+      - 11
+      - 49
+      - 51
+      - 53
+      - 55
+      2:
+      - 1
+      - 5
+      - 9
+      - 11
+      - 49
+      - 51
+      - 53
+      - 55
+      3:
+      - 7
+      - 23
+      4: 3.10.4
+      5: 0.13.7
+      6: 4.25.1
+      8:
+      - 5
+lr:
+  desc: null
+  value: 0.01
+model_name:
+  desc: null
+  value: google/bert_uncased_L-2_H-128_A-2

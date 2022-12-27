@@ -1,0 +1,57 @@
+{
+    "os": "Linux-5.4.0-1094-azure-x86_64-with-glibc2.31",
+    "python": "3.10.4",
+    "heartbeatAt": "2022-12-26T07:27:48.917466",
+    "startedAt": "2022-12-26T07:27:48.069632",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/train.py",
+    "codePath": "Step1-MLMonitoring(Weights&Biases)/train.py",
+    "git": {
+        "remote": "https://github.com/Shubh-kr/MLOps",
+        "commit": "e42a0609043396f34e2c1ed46080046b5fb390fb"
+    },
+    "email": "45756420+Shubh-kr@users.noreply.github.com",
+    "root": "/workspaces/MLOps",
+    "host": "codespaces-a4e48a",
+    "username": "codespace",
+    "executable": "/home/codespace/.python/current/bin/python3",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 2593.905,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2593.905,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2593.905,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2593.905,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2593.905,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 31.32598876953125,
+        "used": 12.104408264160156
+    },
+    "memory": {
+        "total": 7.771213531494141
+    }
+}

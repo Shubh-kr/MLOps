@@ -1,0 +1,81 @@
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Found cached dataset glue (/home/codespace/.cache/huggingface/datasets/glue/cola/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 694.00it/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:00<00:00, 13.47ba/s]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 23.51ba/s]
+  | Name                   | Type                          | Params
+-------------------------------------------------------------------------
+0 | bert                   | BertForSequenceClassification | 4.4 M
+1 | train_accuracy_metric  | BinaryAccuracy                | 0
+2 | val_accuracy_metric    | BinaryAccuracy                | 0
+3 | f1_metric              | BinaryF1Score                 | 0
+4 | precision_macro_metric | BinaryPrecision               | 0
+5 | recall_macro_metric    | BinaryRecall                  | 0
+6 | precision_micro_metric | BinaryPrecision               | 0
+7 | recall_micro_metric    | BinaryRecall                  | 0
+-------------------------------------------------------------------------
+4.4 M     Trainable params
+0         Non-trainable params
+4.4 M     Total params
+17.545    Total estimated model params size (MB)
+/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 4 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 64. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+Sanity Checking DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  6.80it/s]
+/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 4 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 0:  98%|██████████████████████████████████████████████████████▉ | 148/151 [00:40<00:00,  3.69it/s, loss=0.606, v_num=qarb, train/loss_step=0.504, train/acc_step=0.821]
+Validation DataLoader 0:  82%|███████████████████████████████████████████████████████████████████████████████████████████▍                   | 14/17 [00:01<00:00,  9.19it/s]
+/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 19. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+
+
+Validation DataLoader 0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [00:01<00:00,  9.46it/s]
+Metric train/acc_epoch improved. New best score: 0.699
+Traceback (most recent call last):
+  File "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/train.py", line 65, in <module>
+    main()
+  File "/workspaces/MLOps/Step1-MLMonitoring(Weights&Biases)/train.py", line 61, in main
+    trainer.fit(cola_model, cola_data)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 603, in fit
+    call._call_and_handle_interrupt(
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 645, in _fit_impl
+    self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1098, in _run
+    results = self._run_stage()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1177, in _run_stage
+    self._run_train()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1200, in _run_train
+    self.fit_loop.run()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.on_advance_end()
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 295, in on_advance_end
+    self.trainer._call_callback_hooks("on_train_epoch_end")
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1380, in _call_callback_hooks
+    fn(self, self.lightning_module, *args, **kwargs)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/callbacks/model_checkpoint.py", line 312, in on_train_epoch_end
+    self._save_topk_checkpoint(trainer, monitor_candidates)
+  File "/home/codespace/.python/current/lib/python3.10/site-packages/pytorch_lightning/callbacks/model_checkpoint.py", line 367, in _save_topk_checkpoint
+    raise MisconfigurationException(m)
+lightning_lite.utilities.exceptions.MisconfigurationException: `ModelCheckpoint(monitor='val_loss')` could not find the monitored key in the returned metrics: ['train/loss', 'train/loss_step', 'train/acc', 'train/acc_step', 'valid/loss', 'valid/loss_epoch', 'valid/acc', 'valid/precision_macro', 'valid/recall_macro', 'valid/precision_micro', 'valid/recall_micro', 'valid/f1', 'train/loss_epoch', 'train/acc_epoch', 'epoch', 'step']. HINT: Did you call `log('val_loss', value)` in the `LightningModule`?

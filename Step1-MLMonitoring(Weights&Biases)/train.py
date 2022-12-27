@@ -21,7 +21,7 @@ class SamplesVisualisationLogger(pl.Callback):
         sentences = val_batch["sentence"]
 
         outputs = pl_module(val_batch["input_ids"], val_batch["attention_mask"])
-        preds = torch.argmax(outputs.logits, 1)
+        preds = torch.Tensor.argmax(outputs.logits, 1)
         labels = val_batch["label"]
 
         df = pd.DataFrame(
@@ -42,15 +42,15 @@ def main():
     cola_model = ColaModel()
 
     checkpoint_callback = ModelCheckpoint(
-        dirpath="./models", monitor="val_loss", mode="min"
+        dirpath="./models", monitor="train/acc_epoch", mode="min"
     )
     early_stopping_callback = EarlyStopping(
-        monitor="val_loss", patience=3, verbose=True, mode="min"
+        monitor="train/acc_epoch", patience=3, verbose=True, mode="min"
     )
     
     wandb_logger = WandbLogger(project="MLOps Basics", entity="mission_june")
     trainer = pl.Trainer(
-        max_epochs=1,
+        max_epochs=3,
         logger=wandb_logger,
         callbacks=[checkpoint_callback, SamplesVisualisationLogger(cola_data), early_stopping_callback],
         log_every_n_steps=10,

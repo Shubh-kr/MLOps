@@ -19,17 +19,16 @@ class ColaModel(pl.LightningModule):
             model_name, num_labels=2
         )
         self.num_classes = 2
-        self.train_accuracy_metric = torchmetrics.Accuracy
-        self.val_accuracy_metric = torchmetrics.Accuracy
-        self.f1_metric = torchmetrics.F1Score#F1(num_classes=self.num_classes)
-        self.precision_macro_metric = torchmetrics.Precision #Precision(
-        #     average="macro", num_classes=self.num_classes
-        # )
-        self.recall_macro_metric = torchmetrics.Recall#Recall(
-        #     average="macro", num_classes=self.num_classes
-        # )
-        self.precision_micro_metric = torchmetrics.Precision #(average="micro")
-        self.recall_micro_metric = torchmetrics.Recall #(average="micro")
+        self.train_accuracy_metric = torchmetrics.Accuracy(task='binary')
+        self.val_accuracy_metric = torchmetrics.Accuracy(task='binary')
+        self.f1_metric = torchmetrics.F1Score(task='binary')
+
+        self.precision_macro_metric = torchmetrics.Precision(task='binary', average="macro", num_classes=self.num_classes)
+
+        self.recall_macro_metric = torchmetrics.Recall(task='binary', average="macro", num_classes=self.num_classes)
+
+        self.precision_micro_metric = torchmetrics.Precision(task='binary', average="micro")
+        self.recall_micro_metric = torchmetrics.Recall(task='binary', average="micro")
 
     def forward(self, input_ids, attention_mask, labels=None):
         outputs = self.bert(
@@ -42,7 +41,7 @@ class ColaModel(pl.LightningModule):
             batch["input_ids"], batch["attention_mask"], labels=batch["label"]
         )
         # loss = F.cross_entropy(logits, batch["label"])
-        preds = torch.argmax(outputs.logits, 1)
+        preds = torch.Tensor.argmax(outputs.logits, 1)
         train_acc = self.train_accuracy_metric(preds, batch["label"])
         self.log("train/loss", outputs.loss, prog_bar=True, on_epoch=True)
         self.log("train/acc", train_acc, prog_bar=True, on_epoch=True)
@@ -53,7 +52,7 @@ class ColaModel(pl.LightningModule):
         outputs = self.forward(
             batch["input_ids"], batch["attention_mask"], labels=batch["label"]
         )
-        preds = torch.argmax(outputs.logits, 1)
+        preds = torch.Tensor.argmax(outputs.logits, 1)
 
         # Metrics
         valid_acc = self.val_accuracy_metric(preds, labels)
@@ -76,7 +75,7 @@ class ColaModel(pl.LightningModule):
     def validation_epoch_end(self, outputs):
         labels = torch.cat([x["labels"] for x in outputs])
         logits = torch.cat([x["logits"] for x in outputs])
-        preds = torch.argmax(logits, 1)
+        preds = torch.Tensor.argmax(logits, 1)
 
         ## There are multiple ways to track the metrics
         # 1. Confusion matrix plotting using inbuilt W&B method
